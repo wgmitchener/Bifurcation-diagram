@@ -14,17 +14,22 @@ x0 = 5;
 
 x(:,1) = r.*cos(x0);
 
-for i = 150:itr-1
+% WGM: Record all iterations
+for i = 1:itr-1
 
-%function id defined over here
+    %function id defined over here
 
-x(:,i+1) = r.*cos(x(:,i));
+    x(:,i+1) = r.*cos(x(:,i));
 
 end
 
+% WGM: Skip the first 100 or so
+
+x_skip_transients = x(:,101:end);
+
 %Plot the iteration value
 
-plot(r, x, '.', 'MarkerSize', 1);
+plot(r, x_skip_transients, '.', 'MarkerSize', 1);
 
 % To add title of the plot
 
